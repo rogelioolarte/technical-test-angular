@@ -1,4 +1,4 @@
-# 🐱 Cat Fact & Image App
+# 🐱 Technical Test Angular (Cat Fact & Image App) (Junior)
 
 **Description**
 Angular 19 application that:
