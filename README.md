@@ -66,7 +66,7 @@ Open your browser to `http://localhost:4200`.
 4. **Signals & Bindings**
 
 * Container component uses `selectSignal` to expose itself as signals or uses only `select` to expose itself as Observables.
-* Template uses `*ngIf`, `[src]`, `disabled`, `ngIf;else`, etc. directives.
+* Template uses `@if`, `[src]`, `disabled`, `@defer`, etc. directives.
 
 5. **Conditional Rendering**
 
