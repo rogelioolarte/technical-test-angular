@@ -1,101 +1,100 @@
 # 🐱 Cat Fact & Image App
 
-**Descripción**
-Aplicación en Angular 19 que:
+**Description**
+Angular 19 application that:
 
-* Obtiene una frase aleatoria de `https://catfact.ninja/fact`
-* Obtiene una imagen con texto incrustado desde `https://cataas.com/cat/says/{text}`
-* Muestra ambos datos en la UI de forma condicional (cargando, error, éxito)
-* Gestiona estado con NgRx usando signals y vinculaciones reactivas
-* Incluye tests básicos para componentes
+* Gets a random phrase from `https://catfact.ninja/fact`
+* Gets an image with embedded text from `https://cataas.com/cat/says/{text}`
+* Displays both data in the UI conditionally (loading, error, success)
+* Manages state with NgRx using signals and reactive bindings
+* Includes basic component tests
 
 ---
 
-## 📁 Estructura del Proyecto
+## 📁 Project Structure (basic proposal)
 
 ```
 src/
 ├── app/
-│   ├── core/           # Servicios y modelos
-│   ├── store/          # NgRx: actions, reducers, effects, selectors
-│   ├── features/
-│   │   └── cat/        # Módulo 'cat' (componentes, contenedores)
-│   ├── shared/         # Componentes reutilizables (spinner, card, error-message)
-|   |__ pages/		# Paginas a renderizas
-│   └── app.module.ts
+│ ├── core/ # Services and models
+│ ├── store/ # NgRx: actions, reducers, effects, selectors
+│ ├── features/
+│ │ └── cat/ # 'cat' module (components, containers)
+│ ├── shared/ # Reusable components (spinner, card, error-message)
+| |__ pages/ # Pages to render
+│ └── app.module.ts
 ├── assets/
 ├── environments/
-└── README.md           # Este documento
+└── README.md # This document
 ```
 
 ---
 
-## ⚙️ Requisitos y Configuración
+## ⚙️ Requirements and Configuration
 
 * Angular 19
-* NgRx 15+ (o la más reciente compatible)
-* Node.js v16+ & npm o yarn
+* NgRx 15+ (or latest supported)
+* Node.js v16+ & npm or yarn
 
 ```bash
 git clone <repo>
-cd cat-app
+cd technical-test-angular
 npm install
 npm start
 ```
 
-Abre el navegador en `http://localhost:4200`.
+Open your browser to `http://localhost:4200`.
 
 ---
 
-## 🧩 Funcionalidades
+## 🧩 Features
 
-1. **Consumo API de catfact.ninja**
-   Servicio `CatService.getFact()` devuelve un Observable con la frase del día.
+1. **Catfact.ninja API Consumption**
+`CatService.getFact()` service returns an Observable with the quote of the day.
 
-2. **Consumo API de cataas.com**
-   Servicio `CatService.getCatImage(text: string)` devuelve URL:
-   `https://cataas.com/cat/says/${encodeURIComponent(text)}`
+2. **Cataas.com API Consumption**
+`CatService.getCatImage(text: string)` service returns URL:
+`https://cataas.com/cat/says/${encodeURIComponent(text)}`
 
-3. **State Management con NgRx**
+3. **State Management with NgRx**
 
-   * **Actions**: `loadFact`, `loadFactSuccess`, `loadFactFailure`
-   * **Reducer**: maneja estados `{ loading, fact, imageUrl, error }`
-   * **Effects**: escucha `loadFact`, invoca APIs, dispara acciones de éxito o fallo
-   * **Selectors**: extraen piezas del estado para el componente
+* **Actions**: `loadFact`, `loadFactSuccess`, `loadFactFailure`
+* **Reducer**: handles `{loading, fact, imageUrl, error}` states
+* **Effects**: listens to `loadFact`, invokes APIs, triggers success or failure actions
+* **Selectors**: extract pieces of state for the component
 
-4. **Signals & bindings**
+4. **Signals & Bindings**
 
-   * Componente contenedor usa `selectSignal` para exponerse como signals.
-   * Template utiliza directivas `*ngIf`, `[src]`, `disabled`, `ngIf; else`, etc.
+* Container component uses `selectSignal` to expose itself as signals or uses only `select` to expose itself as Observables.
+* Template uses `*ngIf`, `[src]`, `disabled`, `ngIf;else`, etc. directives.
 
-5. **Renderizado condicional**
+5. **Conditional Rendering**
 
-   * Mostrar spinner mientras carga
-   * Mostrar imagen + frase al éxito
-   * Mostrar mensaje de error si ocurre fallo
-   * Botón “Refrescar” activa nueva petición
+* Show spinner while loading
+* Show image + phrase upon success
+* Show error message if error occurs
+* “Refresh” button triggers a new request
 
-6. **Tests mínimos**
+6. **Minimal Testing**
 
-   * Servicio: mock HTTP y cubrir lógica del consumo
-   * Efecto: testear disparo de acciones y manejo de errores
-   * Componente: test de renderizado (estado cargando, éxito, error)
+* Service: HTTP mock and cover consumption logic
+* Effect: Test action triggering and error handling
+* Component: Rendering test (loading status, success, error)
 
 ---
-
 
 ## ✅ Checklist
 
-* [x] Angular 19 o 20
-* [x] NgRx: estado, efectos, selectors
-* [x] Signals en componentes
-* [x] Consumo de ambas APIs
-* [x] Renderizado condicional
-* [x] Tests: servicio, efecto, componente
+* [x] Angular 19 or 20
+* [x] NgRx: state, effects, selectors
+* [x] Signals in components
+* [x] Consumption of both APIs
+* [x] Conditional Rendering
+* [x] Tests: service, effect, component
 
 ---
 
-## ℹ️ Observaciones
+## ℹ️ Observations
 
-* `cataas.com` genera imagen dinámicamente: no requiere descarga previa.
-* Puedes extender el proyecto con más componentes o tests.
+* `cataas.com` generates an image dynamically: no prior download required.
+* You can extend the project with more components or tests.
