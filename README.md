@@ -1,5 +1,3 @@
----
-
 # 🐱 Cat Fact & Image App
 
 **Descripción**
@@ -101,6 +99,3 @@ Abre el navegador en `http://localhost:4200`.
 
 * `cataas.com` genera imagen dinámicamente: no requiere descarga previa.
 * Puedes extender el proyecto con más componentes o tests.
-
----
-
