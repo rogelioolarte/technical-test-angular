@@ -15,7 +15,6 @@ export const appConfig: ApplicationConfig = {
     provideHttpClient(withFetch()),
     provideStore(),
     provideState(FactFeature),
-    provideEffects(),
     provideEffects(FactEffects)
 ]
 };
